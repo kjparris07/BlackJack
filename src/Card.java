@@ -48,7 +48,7 @@ public class Card {
     }
 
     // TODO: 11/17/22 - Change to return String array (to enable hand to be printed horizontally)
-    public String getCard() {
+    public String[] getCard() {
         String icon;
         if (suit == 0) {
             icon = "\u2663"; // clubs
@@ -61,11 +61,16 @@ public class Card {
         } else {
             icon = "X";
         }
-        if (this.value == 10) {
-            return " _____ \n|" + face +"   |\n|  " + icon + "  |\n|_____|";
+        String[] card = new String[4];
+            card[0] = " _____ ";
+            card[2] = "|  " + icon + "  |";
+            card[3] = "|_____|";
+        if (this.face.equals("10")) {
+            card[1] = "|" + face + "   |";
         } else {
-            return " _____ \n|" + face +"    |\n|  " + icon + "  |\n|_____|";
+            card[1] = "|" + face + "    |";
         }
+        return card;
     }
 
     public int compareTo(Card c) {

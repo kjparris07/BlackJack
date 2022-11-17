@@ -46,6 +46,7 @@ public class Deck {
             deck.set(i, temp);
         }
     }
+    // TODO: 11/16/22 implement quicksort 
 
     public Card discard(int index) {
         if (index > -1 && index < deck.size()) {

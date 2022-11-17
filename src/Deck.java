@@ -1,28 +1,29 @@
+import java.util.ArrayList;
+
 public class Deck {
-    private Card[] deck;
+    private ArrayList<Card> deck;
 
     public Deck() {
-        deck = new Card[52];
+        deck = new ArrayList<>();
         for (int i=0; i < 4; i++) {
-            int index = 0;
-            deck[13*i + index++] = new Card("Ace", "A", 1, i);
-            deck[13*i + index++] = new Card("Two", "2", 2, i);
-            deck[13*i + index++] = new Card("Three", "3", 3, i);
-            deck[13*i + index++] = new Card("Four", "4", 4, i);
-            deck[13*i + index++] = new Card("Five", "5", 5, i);
-            deck[13*i + index++] = new Card("Six", "6", 6, i);
-            deck[13*i + index++] = new Card("Seven", "7", 7, i);
-            deck[13*i + index++] = new Card("Eight", "8", 8, i);
-            deck[13*i + index++] = new Card("Nine", "9", 9, i);
-            deck[13*i + index++] = new Card("Ten", "10", 10, i);
-            deck[13*i + index++] = new Card("Jack", "J", 10, i);
-            deck[13*i + index++] = new Card("Queen", "Q", 10, i);
-            deck[13*i + index] = new Card("King", "K", 10, i);
+            deck.add(new Card("Ace", "A", 1, i));
+            deck.add(new Card("Two", "2", 2, i));
+            deck.add(new Card("Three", "3", 3, i));
+            deck.add(new Card("Four", "4", 4, i));
+            deck.add(new Card("Five", "5", 5, i));
+            deck.add(new Card("Six", "6", 6, i));
+            deck.add(new Card("Seven", "7", 7, i));
+            deck.add(new Card("Eight", "8", 8, i));
+            deck.add(new Card("Nine", "9", 9, i));
+            deck.add(new Card("Ten", "10", 10, i));
+            deck.add(new Card("Jack", "J", 10, i));
+            deck.add(new Card("Queen", "Q", 10, i));
+            deck.add(new Card("King", "K", 10, i));
         }
     }
 
-    public Card at(int index) {
-        return deck[index];
+    public Card get(int index) {
+        return deck.get(index);
     }
 
     public void printDeck() {
@@ -31,7 +32,7 @@ public class Deck {
         }
     }
 
-    public Card[] getDeck() {
+    public ArrayList<Card> getDeck() {
         return deck;
     }
 

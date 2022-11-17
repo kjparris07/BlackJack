@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Deck {
     private ArrayList<Card> deck;
@@ -36,6 +37,16 @@ public class Deck {
         return null;
     }
 
+    public void shuffle() {
+        Random random = new Random();
+        for (int i = deck.size() - 1; i > 0; i--) {
+            int index = random.nextInt(i + 1);
+            Card temp = deck.get(index);
+            deck.set(index, deck.get(i));
+            deck.set(i, temp);
+        }
+    }
+
     public Card discard(int index) {
         if (index > -1 && index < deck.size()) {
             Card c = deck.get(index);
@@ -58,7 +69,7 @@ public class Deck {
                 return i;
             }
         }
-        return -2;
+        return -1;
     }
 
     public ArrayList<Card> getDeck() {

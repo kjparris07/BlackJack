@@ -1,5 +1,5 @@
 public class Card {
-    String name, face;
+    private String name, face;
     private int value, suit;
 
     public Card(String name, String face, int value, int suit) {

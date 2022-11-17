@@ -26,14 +26,14 @@ public class Deck {
         return deck.get(index);
     }
 
+    public ArrayList<Card> getDeck() {
+        return deck;
+    }
+
     public void printDeck() {
         for (Card card : deck) {
             System.out.println(card);
         }
-    }
-
-    public ArrayList<Card> getDeck() {
-        return deck;
     }
 
 }

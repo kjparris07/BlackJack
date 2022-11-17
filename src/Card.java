@@ -69,14 +69,14 @@ public class Card {
 
     public int compareTo(Card c) {
         if (this.suit > c.suit) {
-            return 1;
-        } else if (this.suit < c.suit) {
             return -1;
+        } else if (this.suit < c.suit) {
+            return 1;
         } else {
             if (this.value > c.value) {
-                return 1;
-            } else if (this.value < c.value) {
                 return -1;
+            } else if (this.value < c.value) {
+                return 1;
             } else {
                 if (this.face.equals("10")) {
                     if (c.face.equals("10")) return 0;

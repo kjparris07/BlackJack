@@ -2,9 +2,11 @@ import java.util.ArrayList;
 
 public class Deck {
     private ArrayList<Card> deck;
+    private ArrayList<Card> discard;
 
     public Deck() {
         deck = new ArrayList<>();
+        discard = new ArrayList<>();
         for (int i=0; i < 4; i++) {
             deck.add(new Card("Ace", "A", 1, i));
             deck.add(new Card("Two", "2", 2, i));
@@ -24,6 +26,39 @@ public class Deck {
 
     public Card get(int index) {
         return deck.get(index);
+    }
+
+    public Card discard(Card c) {
+        int index = findCard(c);
+        if (index != -1) {
+            return discard(index);
+        }
+        return null;
+    }
+
+    public Card discard(int index) {
+        if (index > -1 && index < deck.size()) {
+            Card c = deck.get(index);
+            deck.remove(index);
+            discard.add(c);
+            return c;
+        }
+        return null;
+    }
+
+    // does not shuffle, just adds the cards to the bottom of the deck
+    public void restoreDiscards() {
+        deck.addAll(discard);
+        discard = new ArrayList<>();
+    }
+
+    private int findCard(Card c) {
+        for (int i=0; i < deck.size(); i++) {
+            if (deck.get(i).compareTo(c) != -1) {
+                return i;
+            }
+        }
+        return -2;
     }
 
     public ArrayList<Card> getDeck() {

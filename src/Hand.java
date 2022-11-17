@@ -32,6 +32,10 @@ public class Hand {
         }
     }
 
+    public ArrayList<Card> getHand() {
+        return hand;
+    }
+
     public int getHandValue() {
         return handValue;
     }

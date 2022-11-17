@@ -31,4 +31,8 @@ public class Deck {
         }
     }
 
+    public Card[] getDeck() {
+        return deck;
+    }
+
 }

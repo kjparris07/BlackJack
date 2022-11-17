@@ -3,20 +3,18 @@ import java.util.ArrayList;
 public class Hand {
     private ArrayList<Card> hand;
     private String[] prettyHand = new String[4];
-    private int handValue, numCards;
+    private int handValue;
 
     public Hand() {
         hand = new ArrayList<>();
         handValue = 0;
-        numCards = 0;
     }
 
     public Hand(Card[] cards) {
         hand = new ArrayList<>();
         handValue = 0;
-        numCards = cards.length;
 
-        for (int i=0; i < numCards; i++) {
+        for (int i=0; i < cards.length; i++) {
             hand.add(cards[i]);
             handValue += cards[i].getValue();
             for (int j=0; j < 4; j++) {
@@ -32,9 +30,8 @@ public class Hand {
     public Hand(ArrayList<Card> cards) {
         hand = new ArrayList<>();
         handValue = 0;
-        numCards = cards.size();
 
-        for (int i=0; i < numCards; i++) {
+        for (int i=0; i < cards.size(); i++) {
             hand.add(cards.get(i));
             handValue += cards.get(i).getValue();
             for (int j=0; j < 4; j++) {
@@ -55,14 +52,9 @@ public class Hand {
         return handValue;
     }
 
-    public int getNumCards() {
-        return numCards;
-    }
-
     public void addCard(Card c) {
         hand.add(c);
         handValue += c.getValue();
-        numCards++;
         String[] card = c.getCard();
         for (int i=0; i < card.length; i++) {
             if (prettyHand[i] == null) {
@@ -74,11 +66,10 @@ public class Hand {
     }
 
     public Card removeCard(int index) {
-        if (index >= 0 && index < numCards) {
+        if (index >= 0 && index < hand.size()) {
             Card c = hand.get(index);
             hand.remove(index);
             handValue -= c.getValue();
-            numCards--;
 
             int cardIndex = 7*index;
             for (int i=0; i < 4; i++) {
@@ -99,7 +90,7 @@ public class Hand {
     }
 
     private int findCard(Card c) {
-        for (int i=0; i < numCards; i++) {
+        for (int i=0; i < hand.size(); i++) {
             if (hand.get(i).compareTo(c) == 0) {
                 return i;
             }

@@ -46,7 +46,48 @@ public class Deck {
             deck.set(i, temp);
         }
     }
-    // TODO: 11/16/22 implement quicksort 
+
+    public void sort() {
+        quicksort(0, deck.size() - 1);
+    }
+
+    private void quicksort(int lo, int hi) {
+        if (lo <= hi) {
+            int pivot = lo++;
+            int index = partition(pivot, lo, hi);
+            if (index > 1) {
+                quicksort(pivot, index - 1);
+            }
+            if (index < deck.size() - 2) {
+                quicksort(index + 1, hi);
+            }
+        }
+    }
+
+    private int partition(int pivot, int lo, int hi) {
+        Card pivotVal = deck.get(pivot);
+        Card loVal = deck.get(lo);
+        Card hiVal = deck.get(hi);
+
+        while (lo < deck.size() - 1 && loVal.compareTo(pivotVal) >= 0) {
+            loVal = deck.get(++lo);
+        }
+
+        while (hi > pivot && hiVal.compareTo(pivotVal) <= 0) {
+            hiVal = deck.get(--hi);
+        }
+
+        if (lo < hi) {
+            deck.set(lo, hiVal);
+            deck.set(hi, loVal);
+            return partition(pivot, lo, hi);
+        } else {
+            deck.set(pivot, hiVal);
+            deck.set(hi, pivotVal);
+            return hi;
+        }
+    }
+
 
     public Card discard(int index) {
         if (index > -1 && index < deck.size()) {
@@ -80,6 +121,18 @@ public class Deck {
     public void printDeck() {
         for (Card card : deck) {
             System.out.println(card);
+        }
+    }
+
+    public void printDeck(int start) {
+        for (int i = start; i < deck.size(); i++) {
+            System.out.println(deck.get(i));
+        }
+    }
+
+    public void printDeck(int start, int end) {
+        for (int i = start; i < end; i++) {
+            System.out.println(deck.get(i));
         }
     }
 

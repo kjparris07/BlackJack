@@ -47,6 +47,7 @@ public class Card {
         }
     }
 
+    // TODO: 11/17/22 - Change to return String array (to enable hand to be printed horizontally)
     public String getCard() {
         String icon;
         if (suit == 0) {

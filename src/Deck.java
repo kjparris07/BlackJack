@@ -9,6 +9,7 @@ public class Deck {
         deck = new ArrayList<>();
         discard = new ArrayList<>();
         for (int i=0; i < 4; i++) {
+            // TODO: 11/18/22 Decide if Aces should default to 11 instead of 1 
             deck.add(new Card("Ace", "A", 1, i));
             deck.add(new Card("Two", "2", 2, i));
             deck.add(new Card("Three", "3", 3, i));

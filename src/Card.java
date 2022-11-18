@@ -1,6 +1,7 @@
 public class Card {
     private String name, face;
     private int value, suit;
+    // TODO: 11/18/22 Implement a "wrong side" of the card (for playing against dealer) 
 
     public Card(String name, String face, int value, int suit) {
         this.name = name;

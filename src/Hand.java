@@ -3,20 +3,16 @@ import java.util.ArrayList;
 public class Hand {
     private ArrayList<Card> hand;
     private String[] prettyHand = new String[4];
-    private int handValue;
 
     public Hand() {
         hand = new ArrayList<>();
-        handValue = 0;
     }
 
     public Hand(Card[] cards) {
         hand = new ArrayList<>();
-        handValue = 0;
 
         for (int i=0; i < cards.length; i++) {
             hand.add(cards[i]);
-            handValue += cards[i].getValue();
             for (int j=0; j < 4; j++) {
                 if (i == 0) {
                     prettyHand[j] = cards[i].getCard()[j];
@@ -29,11 +25,9 @@ public class Hand {
 
     public Hand(ArrayList<Card> cards) {
         hand = new ArrayList<>();
-        handValue = 0;
 
         for (int i=0; i < cards.size(); i++) {
             hand.add(cards.get(i));
-            handValue += cards.get(i).getValue();
             for (int j=0; j < 4; j++) {
                 if (i == 0) {
                     prettyHand[j] = cards.get(i).getCard()[j];
@@ -49,12 +43,13 @@ public class Hand {
     }
 
     public int getHandValue() {
-        return handValue;
+        int val = 0;
+        for (Card c : hand) val += c.getValue();
+        return val;
     }
 
     public void addCard(Card c) {
         hand.add(c);
-        handValue += c.getValue();
         String[] card = c.getCard();
         for (int i=0; i < card.length; i++) {
             if (prettyHand[i] == null) {
@@ -69,7 +64,6 @@ public class Hand {
         if (index >= 0 && index < hand.size()) {
             Card c = hand.get(index);
             hand.remove(index);
-            handValue -= c.getValue();
 
             int cardIndex = 7*index;
             for (int i=0; i < 4; i++) {
